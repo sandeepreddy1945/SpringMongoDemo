@@ -9,16 +9,22 @@ import com.mongodb.MongoClient;
 @Configuration
 public class MongoConfig extends AbstractMongoConfiguration {
 
-    @Value(value = "${application.server.name}")
-    private String dbName;
+	@Value(value = "${application.server.name}")
+	private String dbName;
 
-    @Override
-    protected String getDatabaseName() {
-        return dbName;
-    }
+	@Value(value = "${application.server.host}")
+	private String dbHost;
 
-    @Override
-    public MongoClient mongoClient() {
-        return new MongoClient("127.0.0.1", 27017);
-    }
+	@Value(value = "${application.server.port}")
+	private String dbPort;
+
+	@Override
+	protected String getDatabaseName() {
+		return dbName;
+	}
+
+	@Override
+	public MongoClient mongoClient() {
+		return new MongoClient(dbHost, Integer.valueOf(dbPort));
+	}
 }
