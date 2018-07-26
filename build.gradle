@@ -61,8 +61,8 @@ swagger {
     apiSource {
         springmvc = true
         locations = [ 'com.app.mongo.rest' ]
-        basePath = '/mps/clinical/screening/v1'
-        outputFormats = ['yaml']
+        basePath = '/'
+        outputFormats = ['yaml','json']
         info {
             title = 'Mongo Rest Test'
             version = '1'
